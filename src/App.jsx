@@ -62,7 +62,7 @@ function Navbar() {
         }`}
       >
         <a href="#top" className="flex items-center gap-2 font-display font-bold text-white">
-          <span className="w-8 h-8 rounded-lg bg-accent text-white flex items-center justify-center font-extrabold">O</span>
+          <img src="/avatar.jpg" alt="Olive My Grooming to You" className="w-8 h-8 rounded-lg object-cover" />
           Olive My Grooming
         </a>
         <div className="hidden md:flex items-center gap-6 text-sm text-white/80 font-body">
