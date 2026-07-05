@@ -182,29 +182,30 @@ function Features() {
         </h2>
         <div className="grid md:grid-cols-3 gap-6">
           <div
-            className="rounded-3xl bg-white/5 border border-white/10 p-8 h-72 relative cursor-pointer overflow-hidden"
+            className="rounded-3xl bg-white/5 border border-white/10 p-8 h-72 flex flex-col cursor-pointer overflow-hidden"
             onClick={() => setShuffleOrder((o) => [...o.slice(1), o[0]])}
           >
-            <p className="eyebrow mb-4">Real Reviews</p>
-            {shuffleOrder.map((idx, pos) => (
-              <div
-                key={idx}
-                className="absolute inset-8 rounded-2xl bg-primary p-5 flex flex-col justify-between transition-all duration-500"
-                style={{
-                  transform: `translateY(${pos * 10}px) scale(${1 - pos * 0.05})`,
-                  zIndex: REVIEW_QUOTES.length - pos,
-                  opacity: pos === REVIEW_QUOTES.length - 1 ? 0 : 1,
-                }}
-              >
-                <p className="font-flourish italic text-lg">"{REVIEW_QUOTES[idx].text}"</p>
-                <p className="text-xs text-white/60 font-mono">— {REVIEW_QUOTES[idx].source}</p>
-              </div>
-            ))}
+            <p className="eyebrow mb-4 shrink-0">Real Reviews</p>
+            <div className="relative flex-1">
+              {shuffleOrder.map((idx, pos) => (
+                <div
+                  key={idx}
+                  className="absolute inset-0 rounded-2xl bg-primary p-5 flex flex-col justify-between transition-all duration-500"
+                  style={{
+                    transform: `translateY(${pos * 10}px) scale(${1 - pos * 0.05})`,
+                    zIndex: REVIEW_QUOTES.length - pos,
+                    opacity: pos === REVIEW_QUOTES.length - 1 ? 0 : 1,
+                  }}
+                >
+                  <p className="font-flourish italic text-lg">"{REVIEW_QUOTES[idx].text}"</p>
+                  <p className="text-xs text-white/60 font-mono">— {REVIEW_QUOTES[idx].source}</p>
+                </div>
+              ))}
+            </div>
           </div>
 
           <div className="rounded-3xl bg-white/5 border border-white/10 p-8 h-72 relative overflow-hidden">
-            <p className="eyebrow mb-4">Gentle, Unhurried</p>
-            <div className="absolute inset-0">
+            <div className="absolute inset-0 pointer-events-none">
               {Array.from({ length: 7 }).map((_, i) => (
                 <PawPrint
                   key={i}
@@ -218,6 +219,10 @@ function Features() {
                 />
               ))}
             </div>
+            <p className="eyebrow mb-4 relative">Gentle, Unhurried</p>
+            <p className="font-body text-sm text-white/60 max-w-[16rem] relative">
+              No cage dryers, no rush — every pet gets a calm, one-on-one grooming session.
+            </p>
           </div>
 
           <div className="rounded-3xl bg-white/5 border border-white/10 p-8 h-72 relative overflow-hidden">
